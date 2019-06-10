@@ -3,7 +3,11 @@ const express = require('express'),
       Event   = require('../models/event'),
       mongoose = require('mongoose');
 
-mongoose.connect("mongodb://localhost/EVENTS",{useNewUrlParser: true});
+mongoose.connect('mongodb+srv://ankit:ankit@eventsite-kzwpg.mongodb.net/test?retryWrites=true&w=majority/EventSite', { useNewUrlParser: true }).catch(function(err){
+        console.log(err);
+});
+
+// mongoose.connect('mongodb://localhost/EVENTS' ,{useNewUrlParser: true})
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -42,8 +46,8 @@ router.get('/', function(req, res, next) {
 // });
 
 
-router.post("/events", (req,res) => {
-  Event.find({ type: req.body.type, city: req.body.city}, function (err, docs) {
+router.post("/events", async(req,res) => {
+ await Event.find({ type: req.body.type, city: req.body.city}, function (err, docs) {
     if(err){
       console.log(err);
     }else{
@@ -51,6 +55,6 @@ router.post("/events", (req,res) => {
       res.json(docs);
     }
   });
-})
+});
 
 module.exports = router;
