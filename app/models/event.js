@@ -2,69 +2,64 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const eventSchema = new mongoose.Schema({
+    state: {
+        futureEvent: true,
+        ongoingEvent: false,
+        pastEvent: false,
+        cancelledEvent: false
+    },
     name: {
         type: String,
         required: true
     },  
-    state: {
-        type: String
-    },
-    city: {
+    desc: {
         type: String,
         required: true
     },
     address: {
-        type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: Venue,
+        required: true
     },
-    date: {
-        type: Date
+    time: {
+        timeSlot: {
+            startTime: String,
+            endTime: String,
+        },
+        date: {
+            type: Date
+        },
+        required: true
+    },
+    ticketPrice: {
+        type: Number,
+        required: true
+    },
+    minParticipation: {
+        type: Number,
+        required: true
+    },
+    maxParticipation: {
+        type: Number,
+        required: true
     },
     Amenities: [
         String
     ],
     type: {
-        type: String
-    }
-       
-});
-const userSchema = new mongoose.Schema({
-    firstName: {
         type: String,
         required: true
     },
-    lastName : {
-        type : String,
-        required : false
-    },
-    email : {
-        type : String,
-        required : true
-    },
-    password :{
-        type : String,
-        required : true
-    },
-    events : {
-        //reference to Events Model
-    },
-    bookedEvents: {
-       //reference to Events Model
-    },
-    city: {
-        type: String,
-        required: true
-    },
-    address: {
+    additonalNote: {
         type: String
     },
-    location : {
-        // coordinates
-    },
-    contact : {
-        type : Number,
-        required : true,
+    rules: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: Venue,
+        required: true
     }
 });
+
 const clientSchema = new mongoose.Schema({
     firstName: {
         type: String,
@@ -86,6 +81,8 @@ const clientSchema = new mongoose.Schema({
         required : true,
     }
 });
+
+
 const offersSchema = new mongoose.Schema({
     name: {
         type: String,
