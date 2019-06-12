@@ -103,38 +103,7 @@ const offersSchema = new mongoose.Schema({
         //refs
     }
 });
-const venueSchema = new mongoose.Schema({
-    maxCapacity: {
-        type: Number,
-        required: true
-    },
-    minCapacity : {
-        type : Number,
-        required : false
-    },
-    location : {
-        type : String,
-        required : true
-    },
-    rating : {
-        type : Number,
-        required : false
-    },
-    Amenities: [
-        String
-    ],
-    city: {
-        type: String,
-        required: true
-    },
-    address: {
-        type: String
-    },
-    managerContact : {
-        type : Number,
-        required : true,
-    }
-});
+
 const adminSchema = new mongoose.Schema({
     firstName: {
         type: String,
