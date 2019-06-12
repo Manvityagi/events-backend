@@ -3,9 +3,9 @@ const express = require('express'),
       Event   = require('../models/event'),
       mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://ankit:ankit@eventsite-kzwpg.mongodb.net/test?retryWrites=true&w=majority/EventSite', { useNewUrlParser: true }).catch(function(err){
-        console.log(err);
-});
+mongoose.connect('mongodb+srv://ankit:ankit@eventsite-kzwpg.mongodb.net/test?retryWrites=true&w=majority/EventSite', { useNewUrlParser: true },()=>{
+  console.log('CONnected')
+})
 
 // mongoose.connect('mongodb://localhost/EVENTS' ,{useNewUrlParser: true})
 

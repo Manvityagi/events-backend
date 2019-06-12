@@ -27,6 +27,140 @@ const eventSchema = new mongoose.Schema({
     }
        
 });
+const userSchema = new mongoose.Schema({
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName : {
+        type : String,
+        required : false
+    },
+    email : {
+        type : String,
+        required : true
+    },
+    password :{
+        type : String,
+        required : true
+    },
+    events : {
+        //reference to Events Model
+    },
+    bookedEvents: {
+       //reference to Events Model
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    address: {
+        type: String
+    },
+    location : {
+        // coordinates
+    },
+    contact : {
+        type : Number,
+        required : true,
+    }
+});
+const clientSchema = new mongoose.Schema({
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName : {
+        type : String,
+        required : false
+    },
+    email : {
+        type : String,
+        required : true
+    },
+    hostedEvents : {
+        //reference to Events Model
+    },
+    contact : {
+        type : Number,
+        required : true,
+    }
+});
+const offersSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    discount : {
+        type : Number,
+        required : true
+    },
+    otherDetails: {
+       type : String 
+    },
+
+    applicableEvents: {
+        //refs
+    }
+});
+const venueSchema = new mongoose.Schema({
+    maxCapacity: {
+        type: Number,
+        required: true
+    },
+    minCapacity : {
+        type : Number,
+        required : false
+    },
+    location : {
+        type : String,
+        required : true
+    },
+    rating : {
+        type : Number,
+        required : false
+    },
+    Amenities: [
+        String
+    ],
+    city: {
+        type: String,
+        required: true
+    },
+    address: {
+        type: String
+    },
+    managerContact : {
+        type : Number,
+        required : true,
+    }
+});
+const adminSchema = new mongoose.Schema({
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName : {
+        type : String,
+        required : false
+    },
+    discount : {
+        type : Number,
+        required : true
+    },
+    email : {
+        type : String,
+        required : true
+    },
+    password :{
+        type : String,
+        required : true
+    },
+    contact : {
+        type : Number,
+        required : true,
+    }
+});
 
 module.exports = mongoose.model("Event",eventSchema);
 
