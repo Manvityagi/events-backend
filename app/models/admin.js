@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
-const clientSchema = new mongoose.Schema({
+const adminSchema = new mongoose.Schema({
     firstName: {
         type: String,
         required: true
@@ -11,12 +10,17 @@ const clientSchema = new mongoose.Schema({
         type : String,
         required : false
     },
+    discount : {
+        type : Number,
+        required : true
+    },
     email : {
         type : String,
         required : true
     },
-    hostedEvents : {
-        //reference to Events Model
+    password :{
+        type : String,
+        required : true
     },
     contact : {
         type : Number,
@@ -24,6 +28,5 @@ const clientSchema = new mongoose.Schema({
     }
 });
 
+module.exports = mongoose.model("Admin",adminSchema);
 
-
-module.exports = mongoose.model("Client",clientSchema);
