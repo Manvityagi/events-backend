@@ -3,9 +3,9 @@ const mongoose = require('mongoose'),
       Venue  = require('./venue');
 
 
-const eventSchema = new Schema({
+const eventSchema = new mongoose.Schema({
     state: {
-        
+        type: String
         // draftEvent: {
         //     type: Boolean
         //     //defalut value  true

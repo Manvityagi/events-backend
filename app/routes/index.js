@@ -1,6 +1,6 @@
 const express = require('express'),
       router  = express.Router(),
-      Event   = require('../models/event'),
+      //Event   = require('../models/event'),
       mongoose = require('mongoose');
 
 // mongoose.connect('mongodb+srv://ankit:ankit@eventsite-kzwpg.mongodb.net/test?retryWrites=true&w=majority/EventSite', { useNewUrlParser: true },()=>{
