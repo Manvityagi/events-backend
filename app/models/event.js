@@ -3,10 +3,15 @@ const Schema = mongoose.Schema;
 
 const eventSchema = new mongoose.Schema({
     state: {
-        futureEvent: true,
+        draftEvent: {
+            type: Boolean
+            //defalut value  true
+        } ,
+        minReached: false,
         ongoingEvent: false,
         pastEvent: false,
-        cancelledEvent: false
+        cancelledEvent: false,
+        type: Boolean
     },
     name: {
         type: String,
@@ -31,7 +36,7 @@ const eventSchema = new mongoose.Schema({
         },
         required: true
     },
-    ticketPrice: {
+    ticketMRP: {
         type: Number,
         required: true
     },

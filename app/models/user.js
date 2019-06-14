@@ -37,7 +37,11 @@ const userSchema = new mongoose.Schema({
     contact : {
         type : Number,
         required : true,
-    }
+    },
+    couponId: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: Coupon
+    }]
 });
 
 
