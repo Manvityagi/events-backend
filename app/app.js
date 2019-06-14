@@ -5,8 +5,7 @@ const createError = require('http-errors'),
       methodOverride = require("method-override");
 
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const venueRouter = require('./routes/venue');
 
 mongoose.connect('mongodb://localhost/EVENTS' ,{useNewUrlParser: true})
 
@@ -20,8 +19,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.json());
 app.use(express.static(__dirname + "/public"));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', venueRouter);
 
 
 const port = process.env.PORT || 5000;
