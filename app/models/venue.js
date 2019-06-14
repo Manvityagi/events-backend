@@ -11,7 +11,7 @@ const venueSchema = new mongoose.Schema({
         landmark: String,
         pinCode: Number,
         Street_no: String,
-        required: true
+       // required: true
     },
     maxCapacity: {
         type: Number
@@ -24,7 +24,7 @@ const venueSchema = new mongoose.Schema({
     ],
     venueContact: {
         type : Number,
-        required : true,
+       // required : true,
     },
     image: [
         String                                

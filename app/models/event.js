@@ -1,17 +1,20 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose'),
+      Schema = mongoose.Schema,
+      Venue  = require('./venue');
 
-const eventSchema = new mongoose.Schema({
+
+const eventSchema = new Schema({
     state: {
-        draftEvent: {
-            type: Boolean
-            //defalut value  true
-        } ,
-        minReached: false,
-        ongoingEvent: false,
-        pastEvent: false,
-        cancelledEvent: false,
-        type: Boolean
+        
+        // draftEvent: {
+        //     type: Boolean
+        //     //defalut value  true
+        // } ,
+        // minReached: false,
+        // ongoingEvent: false,
+        // pastEvent: false,
+        // cancelledEvent: false,
+        // // type: Boolean
     },
     name: {
         type: String,

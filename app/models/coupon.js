@@ -12,10 +12,6 @@ const couponSchema = new mongoose.Schema({
     },
     otherDetails: {
        type : String 
-    },
-
-    applicableEvents: {
-        //refs
     }
 });
 
