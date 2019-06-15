@@ -20,47 +20,50 @@ router.get("/client/venues", (req,res) => {
 //  }); 
 
 router.post("/client/venues", (req,res) => {  
-    Venue.create(req.body.venue, (err,newVenue)=> {
+    console.log(req.body);
+    Venue.create(req.body, (err,newVenue)=> {
         if(err){
             console.log(`error from new venue adding: ${err}`);
         }else{
-           // console.log(newvenue);
-            res.redirect("/client/venues");
+            res.json(newVenue);
         }   
     });   
 });
 
-router.get("/client/venues/:id", (req,res) => {
-    Venue.findById(req.params.id, (err,foundVenue)=> {
-        if(err){
-            console.log(err);
-        }else{
-            //console.log(foundvenue)
-            res.render("client/venue/show",{venue: foundVenue});
-        }
-    });
-});
+ /* To see a particular venue */
+// router.get("/client/venues/:id", (req,res) => {
+//     Venue.findById(req.params.id, (err,foundVenue)=> {
+//         if(err){
+//             console.log(err);
+//         }else{
+//             //console.log(foundvenue)
+//             res.render("client/venue/show",{venue: foundVenue});
+//         }
+//     });
+// });
 
-//edit venue route
-router.get("/client/venue/:id/edit", (req,res)=> {
-    Venue.findById(req.params.id, (err,foundVenue)=>{
-       if(err){
-           res.redirect("/client/venues/" + req.params.id);
-           console.log(err);
-       }else{
-           console.log(foundVenue);
-           res.render("client/venue/edit", {venue: foundVenue});
-       }
-    });
-});
+
+// //show edit venue form
+// router.get("/client/venue/:id/edit", (req,res)=> {
+//     Venue.findById(req.params.id, (err,foundVenue)=>{
+//        if(err){
+//            res.redirect("/client/venues/" + req.params.id);
+//            console.log(err);
+//        }else{
+//            console.log(foundVenue);
+//            res.render("client/venue/edit", {venue: foundVenue});
+//        }
+//     });
+// });
 
 router.put("/client/venue/:id", (req,res)=> {
-    venue.findByIdAndUpdate(req.params.id,req.body.venue, (err,foundVenue)=>{
+    Venue.findByIdAndUpdate(req.params.id,req.body, (err,foundVenue)=>{
         if(err){
-            res.redirect("/client/venues/" + req.params.id);
+            //res.redirect("/client/venues/" + req.params.id);
             console.log(err);
         }else{
-            res.redirect("/client/venues/" + req.params.id);
+            //res.redirect("/client/venues/" + req.params.id);
+            res.json("Updated");
         }
     });
 });
@@ -70,9 +73,9 @@ router.delete("/client/venues/:id",function(req,res){
     Venue.findByIdAndDelete(req.params.id, function(err){
         if(err){
             console.log(`deleting error : ${err}`)
-            res.redirect("/client/venues");
+            //res.redirect("/client/venues");
         }else{
-            res.redirect("/client/venues");
+            res.json("deleted");
         }
     });
 });

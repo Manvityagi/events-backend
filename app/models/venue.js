@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const venueSchema = new mongoose.Schema({
     venueName: {
         type : String,
-        required : true
+        //required : true
     },
     address: {
         city: String,
@@ -19,7 +19,7 @@ const venueSchema = new mongoose.Schema({
     rating: {
         type : Number
     },
-    Amenities: [
+    amenities: [
         String
     ],
     venueContact: {
