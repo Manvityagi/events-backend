@@ -5,9 +5,9 @@ const mongoose = require('mongoose'),
 
 const eventSchema = new mongoose.Schema({
     state: {
-        type: String
+        type: String,
         // draftEvent: {
-        //     type: Boolean
+        //     type: Boolean                    //this string should alwaysbe one of the four states - ask nigam bhaiya
         //     //defalut value  true
         // } ,
         // minReached: false,
@@ -15,6 +15,7 @@ const eventSchema = new mongoose.Schema({
         // pastEvent: false,
         // cancelledEvent: false,
         // // type: Boolean
+        default: "draftEvent"
     },
     name: {
         type: String,
@@ -32,12 +33,12 @@ const eventSchema = new mongoose.Schema({
     time: {
         timeSlot: {
             startTime: String,
-            endTime: String,
+            endTime: String
         },
         date: {
             type: Date
-        },
-        required: true
+        }
+        //required: true   //i want it to be true but it gives error
     },
     ticketMRP: {
         type: Number,
@@ -60,11 +61,6 @@ const eventSchema = new mongoose.Schema({
     },
     additonalNote: {
         type: String
-    },
-    rules: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: Venue,
-        required: true
     }
 });
 
