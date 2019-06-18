@@ -1,5 +1,5 @@
 const express = require('express'), 
-      Event=  require('../models/event'),
+      Event=  require('../../models/event'),
       router = express.Router();
 
 //CAN REMOVE /CLENT FROM BEGINNING FROM EACH OF THE ROUTES BCZ YE API TO SABKE LIYE SAME HOGI

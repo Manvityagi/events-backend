@@ -3,6 +3,8 @@ const express = require('express'),
       //Event   = require('../models/event'),
       mongoose = require('mongoose');
 
+      //router.get('/user', (req,res) => res.render("form_user_login"));
+
 // mongoose.connect('mongodb+srv://ankit:ankit@eventsite-kzwpg.mongodb.net/test?retryWrites=true&w=majority/EventSite', { useNewUrlParser: true },()=>{
 //   console.log('CONnected')
 // })
