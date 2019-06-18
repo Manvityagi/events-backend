@@ -5,19 +5,19 @@ const mongoose              = require('mongoose'),
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
-        required: true
+        //required: true
     },
     lastName : {
         type : String,
-        required : false
+        //required : false
     },
     email : {
         type : String,
-        required : true
+        //required : true
     },
     password :{
         type : String,
-        required : true
+        //required : true
     },
     events : {
         //reference to Events Model
@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
     },
     city: {
         type: String,
-        required: true
+        //required: true
     },
     address: {
         type: String
@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
     },
     contact : {
         type : Number,
-        required : true,
+        //required : true,
     },
     couponId: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -45,7 +45,8 @@ const userSchema = new mongoose.Schema({
     }]
 });
 
-userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose,{ usernameField : 'email' });
 
 
 module.exports = mongoose.model("User",userSchema);
+

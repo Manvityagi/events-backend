@@ -4,6 +4,8 @@ const express        = require('express'),
       methodOverride = require('method-override'),
       passport       = require('passport'),
       User           = require('./models/user'),
+      Client         = require('./models/client'),
+      Admin          = require('./models/admin'),
       LocalStrategy  = require('passport-local');
 
       
@@ -17,15 +19,14 @@ mongoose.set('useCreateIndex', true);
 
 //  Connect all our routes to our application
 const routes = require('./routes/index');
-app.use('/', routes);
+
       
 // view engine setup
 app.set('view engine', 'ejs');
 app.use(methodOverride("_method"))
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.json());
+// app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public"));
-
 
 ////////////////////////////////////////////////////PASSPORT SETUP///////////////////////////////////////////////////////////////////////////////
 app.use(require("express-session")({
@@ -37,11 +38,21 @@ app.use(require("express-session")({
 app.use(passport.initialize());
 app.use(passport.session()); 
 
-passport.use(new LocalStrategy(User.authenticate()));
+passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser()); 
+
+passport.use(Client.createStrategy());
+passport.serializeUser(Client.serializeUser());
+passport.deserializeUser(Client.deserializeUser()); 
+
+
+passport.use(Admin.createStrategy());
+passport.serializeUser(Admin.serializeUser());
+passport.deserializeUser(Admin.deserializeUser());
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+app.use('/', routes);
 const port = process.env.PORT || 5000;
 app.listen(port , () => console.log('App listening on port ' + port));
 

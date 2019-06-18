@@ -4,31 +4,31 @@ const mongoose = require('mongoose'),
 const adminSchema = new mongoose.Schema({
     firstName: {
         type: String,
-        required: true
+        //required: true
     },
     lastName : {
         type : String,
-        required : false
+        //required : false
     },
     discount : {
         type : Number,
-        required : true
+        //required : true
     },
     email : {
         type : String,
-        required : true
+        //required : true
     },
     password :{
         type : String,
-        required : true
+        //required : true
     },
     contact : {
         type : Number,
-        required : true,
+        //required : true,
     }
 });
 
-adminSchema.plugin(passportLocalMongoose);
+adminSchema.plugin(passportLocalMongoose,{ usernameField : 'email' });
 
 module.exports = mongoose.model("Admin",adminSchema);
 

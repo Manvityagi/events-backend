@@ -10,7 +10,7 @@ router.get('/', (req,res) => res.render("form_user_login"));
 
 //handling user sign up
 router.post("/register", function(req,res){
-    User.register(new User({username: req.body.username}), req.body.password, function(err, User){
+    User.register(new User({email: req.body.email}), req.body.password, function(err, User){
         if(err){
             res.send(err);
         }else{
@@ -25,9 +25,8 @@ router.post("/register", function(req,res){
 router.post("/login",passport.authenticate("local",{
     //successRedirect: "/",
     failureRedirect: "/",
-    failureFlash: true
 }) ,function(req,res){
-    res.status(200).json({message : "success" })
+    res.status(200).json({message : "successfully logged in" })
 });
 
 
