@@ -1,7 +1,5 @@
 const router = require('express').Router();
 
-router.get('/login', (req,res) => {
-    res.send("hello admin");
-})
+router.use(require('./UD_venue'));
 
 module.exports = router;

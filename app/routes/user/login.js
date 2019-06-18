@@ -1,12 +1,12 @@
 const express  = require('express'),
       passport = require('passport'),
-      User     = require('../models/user'),
+      User     = require('../../models/user'),
       router   = express.Router();
       
 //routes
 
 //show form
-router.get('/user', (req,res) => res.render("form_user_login"));
+router.get('/', (req,res) => res.render("form_user_login"));
 
 //handling user sign up
 router.post("/register", function(req,res){

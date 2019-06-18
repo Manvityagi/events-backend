@@ -1,7 +1,5 @@
 const router = require('express').Router();
 
-router.get('/login', (req,res) => {
-    res.send("hello admin");
-})
+router.use(require('./UD_event'));
 
 module.exports = router;
