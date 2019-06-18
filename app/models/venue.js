@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose'),
+      Client   = require('./client');
 
 const venueSchema = new mongoose.Schema({
     venueName: {
@@ -8,6 +8,7 @@ const venueSchema = new mongoose.Schema({
     },
     address: {
         city: String,
+        locality: String,
         landmark: String,
         pinCode: Number,
         Street_no: String,
@@ -17,6 +18,8 @@ const venueSchema = new mongoose.Schema({
         type: Number
     },
     client: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Client"
 
     },
     rating: {

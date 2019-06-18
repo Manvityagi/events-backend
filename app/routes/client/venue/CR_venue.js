@@ -2,7 +2,7 @@ const express = require('express'),
       Venue =  require('../../../models/venue'),
       router = express.Router();
 
-router.get("/client/venues", (req,res) => {
+router.get("/", (req,res) => {
     Venue.find({},function(err,allVenues){
         if(err){
             console.log(err);
@@ -19,7 +19,7 @@ router.get("/client/venues", (req,res) => {
 //     res.render("client/venue/new"); 
 //  }); 
 
-router.post("/client/venues", (req,res) => {  
+router.post("/", (req,res) => {  
     console.log(req.body);
     Venue.create(req.body, (err,newVenue)=> {
         if(err){
@@ -56,7 +56,7 @@ router.post("/client/venues", (req,res) => {
 //     });
 // });
 
-router.put("/client/venue/:id", (req,res)=> {
+router.put("/:id", (req,res)=> {
     Venue.findByIdAndUpdate(req.params.id,req.body, (err,foundVenue)=>{
         if(err){
             //res.redirect("/client/venues/" + req.params.id);
@@ -69,7 +69,7 @@ router.put("/client/venue/:id", (req,res)=> {
 });
 
 // DELETE venueROUTE
-router.delete("/client/venues/:id",function(req,res){
+router.delete("/:id",function(req,res){
     Venue.findByIdAndDelete(req.params.id, function(err){
         if(err){
             console.log(`deleting error : ${err}`)
