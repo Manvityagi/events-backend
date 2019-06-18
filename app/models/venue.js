@@ -16,6 +16,9 @@ const venueSchema = new mongoose.Schema({
     maxCapacity: {
         type: Number
     },
+    client: {
+
+    },
     rating: {
         type : Number
     },

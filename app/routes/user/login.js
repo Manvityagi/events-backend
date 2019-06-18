@@ -15,7 +15,7 @@ router.post("/register", function(req,res){
             res.send(err);
         }else{
             passport.authenticate("local")(req,res,function(){
-                res.status(200).json({message : "successful signup" })
+                res.status(200).json({message : "successful signup user" })
             });
         }
     });
@@ -26,7 +26,7 @@ router.post("/login",passport.authenticate("local",{
     //successRedirect: "/",
     failureRedirect: "/",
 }) ,function(req,res){
-    res.status(200).json({message : "successfully logged in" })
+    res.status(200).json({message : "successfully logged in user" })
 });
 
 

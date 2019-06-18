@@ -1,7 +1,5 @@
 const router = require('express').Router();
 
-router.get('/book', (req,res) => {
-    res.send("hello admin");
-})
+router.use('/',require('./CR_event'));
 
 module.exports = router;

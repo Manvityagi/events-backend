@@ -1,5 +1,6 @@
 const mongoose              = require('mongoose'),
-      passportLocalMongoose = require('passport-local-mongoose');
+      passportLocalMongoose = require('passport-local-mongoose'),
+      Venue                 = require('../models/venue');
       
 
 
@@ -16,6 +17,12 @@ const clientSchema = new mongoose.Schema({
         type : String,
         //required : true
     },
+    venues: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: Venue
+        }
+    ],
     hostedEvents : {
         //reference to Events Model
     },

@@ -42,14 +42,13 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser()); 
 
-passport.use(Client.createStrategy());
-passport.serializeUser(Client.serializeUser());
-passport.deserializeUser(Client.deserializeUser()); 
-
-
 passport.use(Admin.createStrategy());
 passport.serializeUser(Admin.serializeUser());
 passport.deserializeUser(Admin.deserializeUser());
+
+passport.use(Client.createStrategy());
+passport.serializeUser(Client.serializeUser());
+passport.deserializeUser(Client.deserializeUser()); 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 app.use('/', routes);
