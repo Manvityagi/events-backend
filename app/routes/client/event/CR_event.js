@@ -2,10 +2,10 @@ const express = require('express'),
       Event   = require('../../../models/event'),
       router  = express.Router();
 
-//CAN REMOVE /CLENT FROM BEGINNING FROM EACH OF THE ROUTES BCZ YE API TO SABKE LIYE SAME HOGI
+//CAN REMOVE /CLIENT FROM BEGINNING FROM EACH OF THE ROUTES BCZ YE API TO SABKE LIYE SAME HOGI
 
 
-router.get("/client/events", (req,res) => {
+router.get("/", (req,res) => {
     Event.find({},function(err,allevents){
         if(err){
             console.log(err);
@@ -21,7 +21,7 @@ router.get("/client/events", (req,res) => {
 //     res.render("client/event/new"); 
 //  }); 
 
-router.post("/client/events", (req,res) => { 
+router.post("/", (req,res) => { 
     Event.create(req.body, (err,newEvent)=> {
         if(err){
             console.log(`error from new eventadding: ${err}`);
@@ -57,7 +57,7 @@ router.post("/client/events", (req,res) => {
 //     });
 // });
 
-router.put("/admin/event/:id", (req,res)=> {
+router.put("/:id", (req,res)=> {
     Event.findByIdAndUpdate(req.params.id,req.body, (err,foundevent)=>{
         if(err){
             console.log(err);
@@ -69,7 +69,7 @@ router.put("/admin/event/:id", (req,res)=> {
 });
 
 // DELETE eventROUTE
-router.delete("/admin/event/:id",function(req,res){
+router.delete("/:id",function(req,res){
     Event.findByIdAndDelete(req.params.id, function(err){
         if(err){
             console.log(`deleting error : ${err}`)

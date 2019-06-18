@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'),
-      Schema = mongoose.Schema,
-      Venue  = require('./venue');
+      Venue  = require('./venue'),
+      Client = require('./client');
 
 
 const eventSchema = new mongoose.Schema({
@@ -16,6 +16,10 @@ const eventSchema = new mongoose.Schema({
         // cancelledEvent: false,
         // // type: Boolean
         default: "draftEvent"
+    },
+    client: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: Client
     },
     name: {
         type: String,
@@ -52,7 +56,7 @@ const eventSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    Amenities: [
+    amenities: [
         String
     ],
     type: {
