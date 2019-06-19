@@ -60,6 +60,10 @@ const paymentSchema = new mongoose.Schema({
         type: Number,   
         default:0    
     }
+},
+tillNow:{
+    type : Number,
+    default:0
 }
 });
 
