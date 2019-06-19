@@ -1,10 +1,10 @@
 const mongoose = require('mongoose'),
-Client   = require('./client');
+Admin   = require('./admin');
 
 const couponSchema = new mongoose.Schema({
-    client:{
+    admin:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: Client
+        ref: Admin
     },
      code: {
         type: String,
@@ -19,4 +19,4 @@ const couponSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("Coupon",couponSchema);
+module.exports = mongoose.model("Voucher",couponSchema);

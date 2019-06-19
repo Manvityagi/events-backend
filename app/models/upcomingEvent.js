@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const ongoingEventSchema = new mongoose.Schema({
+const upcomingEventSchema = new mongoose.Schema({
     eventId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: Event
@@ -13,4 +12,4 @@ const ongoingEventSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model("ongoingEvent",eventSchema);
+module.exports = mongoose.model("upcomingEvent",eventSchema);
