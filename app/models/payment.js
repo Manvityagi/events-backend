@@ -61,7 +61,11 @@ const paymentSchema = new mongoose.Schema({
         default:0    
     }
 },
-tillNow:{
+dues:{
+    type : Number,
+    default:0
+},
+donePay:{
     type : Number,
     default:0
 }

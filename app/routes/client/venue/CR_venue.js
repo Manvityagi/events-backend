@@ -22,6 +22,7 @@ router.get("/", (req,res) => {
 router.post("/", (req,res) => {  
     console.log(req.body);
     Venue.create(req.body, (err,newVenue)=> {
+        console.log("hii");
         if(err){
             console.log(`error from new venue adding: ${err}`);
         }else{

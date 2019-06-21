@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import { Link, NavLink, withRouter ,BrowserRouter, Route} from 'react-router-dom'
+import Header from './Header'
+import Event from './Event'
+import Buttonevent from './Buttonevent'
+
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class  App extends Component {
+  render(){
+    return (
+      <BrowserRouter>
+      <div className="App">
+      <div>
+        <Header/>
+       {/* <div class="row">
+          <div class="col l3 s8 m5">
+             <div class="card-panel grey lighten-3"> 
+            <Buttonevent/>
+
+            </div>
+            </div>
+          <div class="col l8">
+          <div class="card-panel grey lighten-3 event">
+            <Event/>
+            </div>
+
+           
+      </div>
+        </div>
+    */}
+ <Buttonevent/>
+      </div>
+    
+      </div>
+      </BrowserRouter>
+       
+      
+      
+    );
+
+  }
+  
 }
 
 export default App;

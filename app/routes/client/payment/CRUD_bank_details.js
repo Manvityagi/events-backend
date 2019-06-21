@@ -1,14 +1,14 @@
 const express = require('express'), 
-      Payment   = require('../../../models/payment'),
+      bankDetails   = require('../../../models/bankDetails'),
       router  = express.Router();
 
 router.get("/", (req,res) => {
-    Payment.find({},function(err,allPayments){
+    bankDetails.find({},function(err,allbankDetailss){
         if(err){
             console.log(err);
         }else{
             //res.render("client/coupon/index", {coupons: allCoupons});
-            res.json(allPayments);
+            res.json(allbankDetailss);
         }
     });
 });
@@ -19,13 +19,13 @@ router.get("/", (req,res) => {
 //  }); 
 
 router.post("/", (req,res) => { 
-    Payment.create(req.body, (err,newPayment)=> {
+    bankDetails.create(req.body, (err,newbankDetails)=> {
         if(err){
-            console.log(`error from new Paymentadding: ${err}`);
+            console.log(`error from new bankDetailsadding: ${err}`);
         }else{
            // console.log(newCoupon);
            // res.redirect("/client/Coupons");
-           res.json(newPayment);
+           res.json(newbankDetails);
         }   
     });   
 });
@@ -55,7 +55,7 @@ router.post("/", (req,res) => {
 // });
 
 router.put("/:id", (req,res)=> {
-    Payment.findByIdAndUpdate(req.params.id,req.body, (err,foundPayment)=>{
+    bankDetails.findByIdAndUpdate(req.params.id,req.body, (err,foundbankDetails)=>{
         if(err){
             console.log(err);
         }else{
@@ -67,7 +67,7 @@ router.put("/:id", (req,res)=> {
 
 // DELETE couponROUTE
 router.delete("/:id",function(req,res){
-    Payment.findByIdAndDelete(req.params.id, function(err){
+    bankDetails.findByIdAndDelete(req.params.id, function(err){
         if(err){
             console.log(`deleting error : ${err}`)
            // res.redirect("/client/coupons");

@@ -3,15 +3,20 @@ const express = require('express'),
       router  = express.Router();
 
 
-      router.get("/:clientId/total", (req,res)=> {
-        Payment.find({
-            client: req.params.client_id,   
+      router.get("/:clientId/paymentSummary", (req,res)=> {
+        Payment.findOne({
+            client: req.params.clientId,   
         }, (err,docs) => {
             if(err){
                 res.send(err);
             }else{
                 console.log("till now is a js function which has to be made");
-               res.json(docs.tillNow);
+            //    res.json({
+            //        "dues": docs.dues,
+            //        "donePay": docs.donePay,
+            //        "totalPay": docs.dues + docs.donePay
+            //     });
+            res.json(docs)
             }
         });
     });

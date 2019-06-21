@@ -11,7 +11,6 @@ router.get("/:client_id/:state", (req,res)=> {
         if(err){
             res.send(err);
         }else{
-            console.log(docs);
            res.json(docs);
         }
     });
