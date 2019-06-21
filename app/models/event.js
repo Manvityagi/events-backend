@@ -36,8 +36,14 @@ const eventSchema = new mongoose.Schema({
     },
     time: {
         timeSlot: {
-            startTime: String,
-            endTime: String
+            startTime: {
+                type: String,
+                default: "00:00"
+            },
+            endTime: {
+                type: String,
+                default: "00:00"
+            }
         },
         date: {
             type: Date
@@ -65,7 +71,15 @@ const eventSchema = new mongoose.Schema({
     },
     additonalNote: {
         type: String
+    },
+    ticketSold: {
+        type: Number,
+        default: 0
     }
+    // totalMoneyCollection: {
+    //     type: Number,
+    //     default: 0
+    // }
 });
 
 

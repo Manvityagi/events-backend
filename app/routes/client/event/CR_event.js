@@ -1,3 +1,5 @@
+//CLIENT ID IS MISSING HERE//
+
 const express = require('express'), 
       Event   = require('../../../models/event'),
       router  = express.Router();

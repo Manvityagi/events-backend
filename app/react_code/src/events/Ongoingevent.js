@@ -1,33 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 class List extends Component {
-    state = {
-        events: [
-            {
-                id: '01',
-                name: 'article15',
-                location: 'rohini',
-                time_start: '12:00',
-                time_end: '3:00',
-                no_of_seats: '20',
-                ticket_price: '100',
-                ticket_sold: '20',
-                total_price_collected: '2000'
-            },
-            {
-                id: '02',
-                name: 'article15',
-                location: 'rohini',
-                time_start: '10:00',
-                time_end: '1:00',
-                no_of_seats: '30',
-                ticket_price: '200',
-                ticket_sold: '20',
-                total_price_collected: '4000'
-            }
-        ]
+      state = { upcomingEvents: [] }
 
-    }
+      componentDidMount() {
+        fetch('/client/events/5d08e15b52c1a64074b90aca/upcomingEvent')
+          .then(res => res.json())
+           .then(upcomingEvents => { this.setState({ upcomingEvents }) 
+                                    console.log(this.state.upcomingEvents)
+                                 } );
+      }
+
     /*    componentDidMount(){
             axios.get('https://jsonplaceholder.typicode.com/posts')
             .then(res => {
@@ -38,24 +21,25 @@ class List extends Component {
             })
         }
      */
+
     render() {
-        const { events } = this.state;
-        const eventList = events.length ? (
-            events.map(event => {
+        const  upcomingEvents  = this.state.upcomingEvents;
+        const eventList = this.state.upcomingEvents.length ? (
+            upcomingEvents.map(event => {
                 return (
-                    <div className=" card grey lighten-3" key={event.id}>
+                    <div className=" card grey lighten-3" key={event._id}>
                         <div className="card-content">
                             <span className="card-title"><b>{event.name}</b></span>
-                            <span class="card-title"><div className="location">{event.location}</div></span>
+                            <span class="card-title"><div className="location">To figure out location</div></span>
                             <div class="row">
                                 <div class="col l6">
-                                    <div><b>Time slot:</b> {event.time_start}-{event.time_end}</div>
-                                    <div><b>Number of Seats:</b> {event.no_of_seats}</div>
+                                    <div><b>Time slot:</b> {event.time.timeSlot.startTime}-{event.time.timeSlot.endTime}</div>
+                                    <div><b>Number of Seats:</b> {event.maxParticipation}</div>
                                 </div>
                                 <div class="col">
-                                    <div><b>Ticket price:</b> {event.ticket_price}</div>
-                                    <div><b>Ticket Sold:</b> {event.ticket_sold}</div>
-                                    <div><b>Total Price Collected: </b>{event.total_price_collected}</div>
+                                    <div><b>Ticket price:</b> {event.ticketMRP}</div>
+                                    <div><b>Ticket Sold:</b> {event.ticketSold}</div>
+                                    <div><b>Total Price Collected: </b>{event.ticketMRP*event.ticketSold}</div>
                                 </div>
 
                             </div>
@@ -68,7 +52,6 @@ class List extends Component {
             )
         return (
         <div className="container">
-           
                 {eventList}
             </div>
         )
