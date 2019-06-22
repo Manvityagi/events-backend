@@ -15,22 +15,7 @@ class Payment extends Component {
     totalPay: ''
 
   }
-  
-  // handleNameChange = event => {
-  //   this.setState({ bankname: event.target.value })
-  // }
-  // handleaccnoChange = event => {
-  //   this.setState({ account_number: event.target.value })
-  // }
-  // handleifscChange = event => {
-  //   this.setState({ ifsc_code: event.target.value })
-  // }
-  // handlebranchChange = event => {
-  //   this.setState({ branch: event.target.value })
-  // }
-  // handlecontactChange = event => {
-  //   this.setState({ contact: event.target.value })
-  // }
+
    
   handleInputChange = event => {
     this.setState({
@@ -75,8 +60,8 @@ class Payment extends Component {
             <form onSubmit={this.handleSubmit} name="myform" style={ hidden }>
               <div class="input-field inline"  >
                 <label>Bank Name</label>
-                <input type="text" name="bank_name" id="" onChange={this.handleInputChange} value={this.state.bankname} />
-              </div>Input
+                <input type="text" name="bankname" id="" onChange={this.handleInputChange} value={this.state.bankname} />
+              </div>
               <div class="input-field inline " >
                 <label>Account Number</label>
                 <input type="text" name="account_number" id="" onChange={this.handleInputChange} value={this.state.account_number} />
@@ -120,8 +105,8 @@ class Payment extends Component {
         </div>
             <hr />
             &nbsp;
-            <p> Rs{this.state.dues} </p>
-            <p>Rs{this.state.donePay} </p>
+            <p> Due Payment : Rs{this.state.dues} </p>
+            <p>Payment Done: Rs{this.state.donePay} </p>
             &nbsp;&nbsp;
         <hr />
             <p>Total Payment : Rs {this.state.totalPay}</p>

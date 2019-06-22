@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, NavLink } from "react-router-dom";
 import Payment from "./Components/payment";
 import Event from './Event'
-import ClientEvents from './events/ClientEvents'
-import profile from './profile/Profile'
+import ClientEvents from './Components/events/ClientEvents'
+import profile from './Components/profile/Profile'
 import './App.css'
-import Location from './venue/Location'
+import Location from './Components/venue/Location'
 
 /*class Event extends Component{
     render(){

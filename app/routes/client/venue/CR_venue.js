@@ -26,6 +26,8 @@ router.post("/", (req,res) => {
         if(err){
             console.log(`error from new venue adding: ${err}`);
         }else{
+            console.log("oo baby");
+            console.log(newVenue);
             res.json(newVenue);
         }   
     });   
