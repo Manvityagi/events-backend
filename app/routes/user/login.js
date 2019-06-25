@@ -5,9 +5,6 @@ const express  = require('express'),
       
 //routes
 
-//show form
-router.get('/', (req,res) => res.render("form_user_login"));
-
 //handling user sign up
 router.post("/register", function(req,res){
     User.register(new User({email: req.body.email}), req.body.password, function(err, User){
