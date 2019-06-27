@@ -1,10 +1,10 @@
 const router = require('express').Router();
 
-router.use('/coupons',require('./coupon'));
-router.use('/events',require('./event'));
-router.use('/venues',require('./venue'));
-router.use('/payments',require('./payment'));
-router.use('/dashboard',require('./dashboard'));
+router.use('/:client_id/coupons',require('./coupon'));
+router.use('/:client_id/events',require('./event'));
+router.use('/:client_id/venues',require('./venue'));
+router.use('/:client_id/payments',require('./payment'));
+router.use('/:client_id/dashboard',require('./dashboard'));
 //router.use('/',require('./login'));
 
 module.exports = router;
