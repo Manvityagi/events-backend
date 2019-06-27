@@ -1,6 +1,6 @@
                                    //client/dashboard/:client_id/stats
 
-//1. total events done by a client   //count from Client model the number of events in eventarray having state successfull
+//1. total successfull events done by a client   //count from Client model the number of events in event array having state successfull
 //2. total upcoming events           // same
 //3. cancelled events                // same
 //4. total business done             // extract from payment model

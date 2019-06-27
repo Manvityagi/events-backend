@@ -1,6 +1,5 @@
 const router = require('express').Router();
 
-router.use('/',require('./cards_data'));
-// router.use('/',require('./fetch_events'));
+//router.use('/',require('./cards_data'));
 
 module.exports = router;

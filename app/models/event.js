@@ -8,19 +8,12 @@ const eventSchema = new mongoose.Schema({
         type: String,
         // draftEvent: {
         //     type: Boolean                    //this string should alwaysbe one of the four states - ask nigam bhaiya
-        //     //defalut value  true
-        // } ,
-        // minReached: false,
-        // ongoingEvent: false,
-        // pastEvent: false,
-        // cancelledEvent: false,
-        // // type: Boolean
         default: "draftEvent"
     },
-    client: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: Client
-    },
+    // client: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: Client
+    // },
     name: {
         type: String,
         required: true
@@ -34,7 +27,7 @@ const eventSchema = new mongoose.Schema({
         ref: Venue,
         required: true
     },
-    time: {
+    time: {                            // changes here
         timeSlot: {
             startTime: {
                 type: String,
@@ -75,11 +68,9 @@ const eventSchema = new mongoose.Schema({
     ticketSold: {
         type: Number,
         default: 0
-    }
-    // totalMoneyCollection: {
-    //     type: Number,
-    //     default: 0
-    // }
+    },
+   /// ref coupon &voucher
+    
 });
 
 

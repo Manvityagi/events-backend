@@ -8,8 +8,27 @@ const express        = require('express'),
       Admin          = require('./models/admin'),
       LocalStrategy  = require('passport-local');
 
+    //   const MongoClient = require('mongodb').MongoClient;
+    //   const uri = "mongodb+srv://Manvi_Tyagi:manvi8384@cluster0-lwpy4.mongodb.net/test?retryWrites=true&w=majority";
+    //   MongoClient.connect(uri,{ useNewUrlParser: true }, function(err, client) {
+    //     if(err) {
+    //          console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
+    //     }
+    //     console.log('Connected to mongodb atlas');
+    //     const collection = client.db("test").collection("devices");
+    //     // perform actions on the collection object
+    //     client.close();
+    //  });
       
-mongoose.connect('mongodb://localhost/EVENTS' ,{useNewUrlParser: true})
+mongoose.connect('mongodb+srv://Manvi_Tyagi:manvi8384@cluster0-lwpy4.mongodb.net/test?retryWrites=true&w=majority' ,{useNewUrlParser: true}, (err) =>{
+    if(err)
+    console.log(err);
+    else
+    console.log("mongo atlas connected")
+});
+      
+
+//mongoose.connect('mongodb://localhost/EVENTS' ,{useNewUrlParser: true})
 
 const app = express();
      
@@ -38,12 +57,22 @@ app.use(require("express-session")({
 app.use(passport.initialize());
 app.use(passport.session()); 
 
-passport.use(User.createStrategy());
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser()); 
+// passport.use(User.createStrategy());
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser()); 
+
+passport.use(Client.createStrategy());
+passport.serializeUser(Client.serializeUser());
+passport.deserializeUser(Client.deserializeUser()); 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 app.use('/', routes);
 const port = process.env.PORT || 5000;
-app.listen(port , () => console.log('App listening on port ' + port));
+app.listen(port , (err) => {
+    if(err)
+    console.log(err);
+    else
+    console.log('App listening on port ' + port)
+}
+);
 

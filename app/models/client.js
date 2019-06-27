@@ -1,6 +1,7 @@
 const mongoose              = require('mongoose'),
       passportLocalMongoose = require('passport-local-mongoose'),
-      Venue                 = require('../models/venue');
+      Venue                 = require('../models/venue'),
+      Event                 = require('../models/event');
       
 
 
