@@ -1,0 +1,1 @@
+1. Notifications should be a column as an array in each of client, user & admin collection.

@@ -1,40 +1,72 @@
 const mongoose = require('mongoose'),
-      Client   = require('./client');
+      Client   = require('./client'),
+      Amenities = require('./amenity'); 
 
 const venueSchema = new mongoose.Schema({
     venueName: {
         type : String,
-        //required : true
+        required : true
     },
-    address: {
-        city: String,
-        locality: String,
-        landmark: String,
-        pinCode: Number,
-        Street_no: String,
-       // required: true
+    noOfScreens: {
+        type : Number,
+        required : true
     },
-    maxCapacity: {
-        type: Number
+    street_block: {
+        type : String,
+        required : false
+    },
+    line1: {
+        type : String,
+        required : false
+    },
+    line2: {
+        type : String,
+        required : false
+    },
+    city: {
+        type : String,
+        required : true
+    }, 
+    state: {
+        type : String,
+        required : true
+    },  
+    country: {
+        type : String,
+        required : true
+    },
+    pinCode: {
+        type : String,
+        required : true
+    },
+    landmark: {
+        type : String,
+        required : false
+    },
+    eventType:{
+        //bool // movie // comedy
+        movie: Boolean,
+        comedy: Boolean
     },
     client: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Client"
-
     },
-    rating: {
-        type : Number
-    },
-    amenities: [
-        String
-    ],
+//     amenities: [{
+//         type: mongoose.Schema.Types.ObjectId,
+//         ref: Amenities
+// }],
     venueContact: {
         type : Number,
-       // required : true,
+       required : true,
     },
     image: [
         String                                
-    ]
+    ],
+    verified: {
+        type:Boolean,
+        default: false
+    }
 });
 
 module.exports = mongoose.model("Venue",venueSchema);

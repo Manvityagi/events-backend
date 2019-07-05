@@ -36,7 +36,7 @@ const clientSchema = new mongoose.Schema({
     //                                                  // AS I HAVE ONLY 1 COLLECTION EVENT RYT NOW & I AM MAINTAINING STATES IN IT
     //     }
     // ],
-    events: [
+    events: [                //bookings   booking id ref
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: Event
