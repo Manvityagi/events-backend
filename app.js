@@ -2,12 +2,11 @@ const express        = require('express'),
       mongoose       = require('mongoose'),
       bodyParser     = require('body-parser'),
       methodOverride = require('method-override'),
-      passport       = require('passport'),
-      User           = require('./models/user'),
-      Client         = require('./models/client'),
-      Admin          = require('./models/admin'),
-      LocalStrategy  = require('passport-local');
-      
+      passport       = require('./passport'),
+      app = express();
+
+const auth = require('./routes/auth');
+app.use('/auth', auth);
 // mongoose.connect('mongodb+srv://Manvi_Tyagi:manvi8384@cluster0-lwpy4.mongodb.net/test?retryWrites=true&w=majority' ,{useNewUrlParser: true}, (err) =>{
 //     if(err)
 //     console.log(err);
@@ -17,8 +16,6 @@ const express        = require('express'),
       
 
 mongoose.connect('mongodb://localhost/EVENTS' ,{useNewUrlParser: true})
-
-const app = express();
      
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -35,24 +32,6 @@ app.use(methodOverride("_method"))
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public"));
 
-////////////////////////////////////////////////////PASSPORT SETUP///////////////////////////////////////////////////////////////////////////////
-app.use(require("express-session")({
-    secret: "secret shall remain a secret",
-    resave: false,
-    saveUninitialized: false
-}));
-
-app.use(passport.initialize());
-app.use(passport.session()); 
-
-// passport.use(User.createStrategy());
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser()); 
-
-passport.use(Client.createStrategy());
-passport.serializeUser(Client.serializeUser());
-passport.deserializeUser(Client.deserializeUser()); 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 app.use('/', routes);
 const port = process.env.PORT || 5000;
